@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 // Importamos la imagen desde la carpeta assets
 import logoImg from '../../assets/Nuevo_logo_202020.png'; 
-import styles from './Navbar.module.css';
+import styles from './NavBar.module.css';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
