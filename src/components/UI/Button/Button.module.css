@@ -1,0 +1,71 @@
+.btn {
+  display: inline-block;
+  padding: 12px 32px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 50px; /* Bordes redondeados modernos */
+  cursor: pointer;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  text-align: center;
+  text-decoration: none;
+  font-family: var(--font-main);
+  z-index: 1;
+}
+
+/* PRIMARIO (Naranja) */
+.primary {
+  background: var(--primary-color);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(198, 77, 39, 0.4);
+}
+.primary:hover {
+  background: #d6552e;
+  box-shadow: 0 6px 20px rgba(198, 77, 39, 0.6);
+  transform: translateY(-2px);
+}
+
+/* OUTLINE (Transparente con borde) */
+.outline {
+  background: transparent;
+  border: 2px solid rgba(255,255,255,0.2);
+  color: var(--text-light);
+}
+.outline:hover {
+  border-color: var(--primary-color);
+  background: rgba(198, 77, 39, 0.1);
+  color: var(--text-light);
+}
+
+.subtle {
+  background: rgba(198, 77, 39, 0.15); /* Naranja muy transparente */
+  color: var(--primary-color);
+  border: 1px solid rgba(198, 77, 39, 0.3);
+}
+
+.subtle:hover {
+  background: var(--primary-color); /* Al hover se vuelve sólido */
+  color: white;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 20px rgba(198, 77, 39, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Efecto de brillo interno */
+.glow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transform: skewX(-20deg);
+  transition: 0.5s;
+  z-index: -1;
+}
+.btn:hover .glow {
+  left: 150%;
+  transition: 0.7s;
+}

@@ -1,0 +1,48 @@
+/* Espaciados rápidos */
+.mb-1 { margin-bottom: 1rem; }
+.mb-2 { margin-bottom: 2rem; }
+.mb-4 { margin-bottom: 4rem; }
+
+/* Texto */
+.text-center { text-align: center; }
+.text-primary { color: var(--primary-color); }
+.text-gradient {
+  background: linear-gradient(90deg, #fff, #aaa);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Flexbox Helpers */
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Grid Helper */
+.grid-responsive {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* utils.css o index.css - clase global */
+.container {
+  width: 100%;
+  max-width: var(--container-width); /* 1200px */
+  margin: 0 auto;
+  padding: 0 40px; /* <-- esto es lo que da los márgenes laterales */
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+}

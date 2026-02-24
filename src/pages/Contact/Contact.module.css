@@ -1,0 +1,36 @@
+/* =========================================
+   Contact.module.css
+   ========================================= */
+
+.contactPage {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--secondary-color);
+}
+
+.contactSection {
+  padding: 100px 0 120px;
+  position: relative;
+}
+
+.contactSection::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.07) 50%, transparent);
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .contactSection { padding: 60px 0 80px; }
+  .contactGrid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}

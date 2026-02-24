@@ -1,0 +1,120 @@
+/* =========================================
+   CALL TO ACTION — CallToAction.module.css
+   ========================================= */
+
+.ctaSection {
+  padding: 140px 0;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Fondo con imagen */
+.ctaBg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: 0;
+}
+
+/* Overlay oscuro */
+.ctaOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    var(--secondary-color) 0%,
+    rgba(8,8,8,0.92) 30%,
+    rgba(8,8,8,0.92) 70%,
+    var(--secondary-color) 100%
+  );
+  z-index: 1;
+}
+
+.ctaInner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Eyebrow */
+.ctaEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+.ctaEyebrow::before,
+.ctaEyebrow::after {
+  content: '';
+  display: inline-block;
+  width: 20px; height: 1px;
+  background: var(--primary-color);
+  opacity: 0.6;
+}
+
+/* Título */
+.ctaTitle {
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--text-light);
+  letter-spacing: -2px;
+  line-height: 1.05;
+  margin-bottom: 20px;
+}
+
+.ctaTitle em {
+  font-style: normal;
+  color: var(--primary-color);
+}
+
+/* Divider */
+.ctaDivider {
+  width: 48px; height: 3px;
+  background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  border-radius: 2px;
+  margin: 0 auto 28px;
+}
+
+/* Subtítulo */
+.ctaSubtitle {
+  font-size: 1.05rem;
+  color: #909090;
+  max-width: 520px;
+  margin: 0 auto 48px;
+  line-height: 1.85;
+  font-weight: 300;
+}
+
+/* Botón Container (Modificado para evitar recortes) */
+.ctaActions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible; /* Permite que el resplandor y escalado se vean */
+  padding: 10px 0; /* Da un poco de aire extra para la animación */
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .ctaSection { padding: 100px 0; }
+  .ctaTitle { font-size: 2.8rem; letter-spacing: -1px; }
+  .ctaBg { background-attachment: scroll; }
+}
+
+@media (max-width: 600px) {
+  .ctaSection { padding: 80px 0; }
+  .ctaTitle { font-size: 2.2rem; }
+  .ctaActions { width: 100%; max-width: 280px; }
+}

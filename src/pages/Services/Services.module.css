@@ -1,0 +1,10 @@
+/* =========================================
+   Services.module.css
+   — El hero fue movido a ServicesHero.module.css
+   ========================================= */
+
+.servicesPage {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--secondary-color);
+}

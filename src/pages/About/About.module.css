@@ -1,0 +1,11 @@
+/* =========================================
+   About.module.css
+   Solo el page wrapper. Cada sección
+   tiene su propio .module.css
+   ========================================= */
+
+.aboutPage {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--secondary-color);
+}

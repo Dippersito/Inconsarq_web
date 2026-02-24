@@ -1,0 +1,177 @@
+/* =========================================
+   FOOTER — Footer.module.css
+   ========================================= */
+
+.footer {
+  background-color: #0a0a0a; /* Un tono más oscuro que el secundario para contraste */
+  color: var(--text-gray);
+  padding: 80px 0 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: auto;
+  font-size: 0.95rem;
+}
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1.5fr 0.8fr 1fr; /* Estructura asimétrica profesional */
+  gap: 60px;
+}
+
+/* ── COLUMNA 1: INFO Y LOGO ── */
+.logo {
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 25px;
+}
+
+/* Ajustes de la imagen del logo en el Footer */
+.logoImage {
+  height: 55px; /* Un poco más grande que en el navbar para darle presencia */
+  width: auto;
+  display: block;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: brightness(0.9); /* Ligeramente apagado para combinar con el footer */
+}
+
+.logo:hover .logoImage {
+  transform: scale(1.03);
+  filter: brightness(1.1); /* Se ilumina al pasar el mouse */
+}
+
+.description {
+  margin-bottom: 30px;
+  line-height: 1.6;
+  max-width: 300px;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center; /* Alineación vertical perfecta */
+  gap: 12px;
+}
+
+.iconWrapper {
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+}
+
+.contactLabel {
+  font-size: 0.8rem;
+  color: var(--text-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.mapLink {
+  color: var(--text-gray);
+  padding-bottom: 2px;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+.mapLink:hover { color: var(--primary-color); }
+
+/* ── COLUMNA 2: ENLACES ── */
+.centerColumn h3, .column h3 {
+  color: var(--text-light);
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+
+.linksList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.linksList a {
+  color: var(--text-gray);
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.linksList a:hover {
+  color: var(--primary-color);
+  transform: translateX(5px); /* Pequeño movimiento a la derecha al hover */
+}
+
+/* ── COLUMNA 3: SOCIAL ── */
+.socialText {
+  margin-bottom: 25px;
+}
+
+.socialGrid {
+  display: flex;
+  gap: 15px;
+}
+
+.socialIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-light);
+  border-radius: 50%; /* Círculos perfectos */
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.socialIcon:hover {
+  background: var(--primary-color);
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(198, 77, 39, 0.4);
+}
+
+/* ── COPYRIGHT ── */
+.copyright {
+  text-align: center;
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr; /* Todo en una columna */
+    gap: 40px;
+  }
+  
+  .footer { text-align: center; }
+  
+  /* Centrar logo en móvil */
+  .logo {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto 25px;
+  }
+  
+  .description { margin: 0 auto 30px; }
+  
+  .contactItem { 
+    justify-content: center; /* Centrar items de contacto */
+  }
+  
+  .socialGrid {
+    justify-content: center; /* Centrar redes sociales */
+  }
+  
+  .linksList a:hover { transform: none; color: var(--primary-color); }
+}

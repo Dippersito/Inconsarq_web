@@ -1,0 +1,232 @@
+/* =========================================
+   CONTACT FORM — ContactForm.module.css
+   ========================================= */
+
+.formCard {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.35);
+}
+
+/* Cabecera de la card */
+.formHeader {
+  padding: 40px 44px 32px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.015);
+}
+
+.formEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  opacity: 0.85;
+}
+
+.formTitle {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--text-light);
+  letter-spacing: -0.5px;
+  margin: 0 0 8px;
+}
+
+.formSubtitle {
+  font-size: 0.85rem;
+  color: #727272;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Formulario */
+.form {
+  padding: 36px 44px 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Fila de dos columnas */
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+
+.input {
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 14px 16px;
+  color: var(--text-light);
+  font-family: var(--font-main);
+  font-size: 0.92rem;
+  transition: border-color 0.25s ease,
+              background 0.25s ease,
+              box-shadow 0.25s ease;
+  width: 100%;
+  /* Quita el estilo nativo del select */
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.input::placeholder { color: rgba(255,255,255,0.2); }
+
+.input:focus {
+  outline: none;
+  border-color: rgba(198,77,39,0.6);
+  background: rgba(0,0,0,0.35);
+  box-shadow: 0 0 0 3px rgba(198,77,39,0.1);
+}
+
+/* Select: flecha custom */
+select.input {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+  cursor: pointer;
+  color: rgba(255,255,255,0.5);
+}
+
+select.input option {
+  background: #1a1a1a;
+  color: white;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Botón submit */
+.submitBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--primary-color);
+  color: white;
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 32px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 4px;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.submitBtn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.submitBtn:hover::before { transform: translateX(100%); }
+
+.submitBtn:hover:not(:disabled) {
+  background: #d4561e;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(198,77,39,0.4);
+}
+
+.submitBtn:active:not(:disabled) { transform: translateY(0); }
+
+.submitBtn.loading { opacity: 0.7; cursor: not-allowed; }
+
+/* Spinner */
+.spinner {
+  width: 20px; height: 20px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Estado de éxito */
+.successState {
+  padding: 60px 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+}
+
+.successIcon {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: rgba(198,77,39,0.1);
+  border: 1px solid rgba(198,77,39,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+  margin-bottom: 8px;
+}
+
+.successState h3 {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--text-light);
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+.successState p {
+  color: #888;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  max-width: 320px;
+  margin: 0;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .formHeader { padding: 32px 28px 24px; }
+  .form { padding: 28px 28px 36px; }
+  .row { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .formHeader { padding: 28px 20px 20px; }
+  .form { padding: 24px 20px 28px; }
+}

@@ -1,0 +1,12 @@
+/* =========================================
+   Home.module.css
+   — Hero           → Hero.module.css
+   — WhoWeAre       → WhoWeAre.module.css
+   — ServicesCarousel → ServicesCarousel.module.css
+   — CallToAction   → CallToAction.module.css
+   ========================================= */
+
+.homeContainer {
+  width: 100%;
+  overflow-x: hidden;
+}

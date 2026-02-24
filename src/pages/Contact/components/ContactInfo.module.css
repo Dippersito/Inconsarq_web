@@ -1,0 +1,145 @@
+/* =========================================
+   CONTACT INFO — ContactInfo.module.css
+   ========================================= */
+
+.infoSide {
+  display: flex;
+  flex-direction: column;
+}
+
+.sectionLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  margin-bottom: 18px;
+}
+
+.sectionLabel::before {
+  content: '';
+  display: inline-block;
+  width: 28px; height: 2px;
+  background: var(--primary-color);
+  opacity: 0.7;
+}
+
+.heading {
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: var(--text-light);
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  margin-bottom: 20px;
+}
+
+.heading em {
+  font-style: normal;
+  color: var(--primary-color);
+}
+
+.divider {
+  width: 48px; height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), transparent);
+  border-radius: 2px;
+  margin-bottom: 24px;
+}
+
+.description {
+  font-size: 0.95rem;
+  color: #909090;
+  line-height: 1.85;
+  margin-bottom: 48px;
+  max-width: 400px;
+}
+
+/* Lista de info */
+.infoList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 40px;
+}
+
+.infoItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 20px;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.infoItem:hover {
+  background: rgba(255,255,255,0.03);
+  border-color: rgba(255,255,255,0.06);
+}
+
+.iconBox {
+  flex-shrink: 0;
+  width: 42px; height: 42px;
+  border-radius: 11px;
+  background: rgba(198,77,39,0.1);
+  border: 1px solid rgba(198,77,39,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+  transition: background 0.25s ease;
+}
+
+.infoItem:hover .iconBox {
+  background: rgba(198,77,39,0.18);
+}
+
+.infoText {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-top: 2px;
+}
+
+.infoLabel {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+
+.infoValue {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  display: block;
+}
+
+a.infoValue:hover {
+  color: var(--primary-color);
+}
+
+/* Tagline */
+.tagline {
+  padding: 20px 24px;
+  border-left: 3px solid var(--primary-color);
+  background: linear-gradient(90deg, rgba(198,77,39,0.07), transparent);
+  border-radius: 0 12px 12px 0;
+}
+
+.tagline span {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: #909090;
+  font-weight: 500;
+}
+
+@media (max-width: 900px) {
+  .heading { font-size: 2rem; }
+  .description { max-width: 100%; }
+}

@@ -1,0 +1,17 @@
+.layoutWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  background-color: var(--secondary-color);
+}
+
+.mainContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  /* Si el navbar es fixed y tapa contenido, descomenta la siguiente línea: */
+  /* padding-top: var(--header-height); */
+}

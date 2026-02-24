@@ -1,0 +1,41 @@
+.wrapper {
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.center { text-align: center; }
+.left { text-align: left; }
+.right { text-align: right; }
+
+.title {
+  font-size: 2.5rem;
+  color: var(--text-light);
+  margin-bottom: 1rem;
+  display: inline-block;
+  position: relative;
+}
+
+/* Línea decorativa animada */
+.line {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: var(--primary-color);
+  margin-top: 10px;
+  border-radius: 2px;
+}
+
+.center .line { margin: 10px auto 0; }
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--text-gray);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 768px) {
+  .title { font-size: 2rem; }
+}

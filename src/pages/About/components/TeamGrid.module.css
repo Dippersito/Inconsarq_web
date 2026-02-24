@@ -1,0 +1,245 @@
+/* =========================================
+   TEAM GRID — TeamGrid.module.css
+   ========================================= */
+
+.teamSection {
+  padding: 120px 0;
+  background-color: var(--secondary-color);
+  position: relative;
+  overflow: hidden; 
+}
+
+.bgAccent {
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(198,77,39,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── TÍTULO ── */
+.titleBlock {
+  text-align: center;
+  margin-bottom: 60px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sectionLabel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  margin-bottom: 18px;
+}
+
+.sectionLabel::before,
+.sectionLabel::after {
+  content: '';
+  display: inline-block;
+  width: 24px; height: 1px;
+  background: var(--primary-color);
+  opacity: 0.6;
+}
+
+.heading {
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: var(--text-light);
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  margin-bottom: 20px;
+}
+
+.heading em {
+  font-style: normal;
+  color: var(--primary-color);
+}
+
+.divider {
+  width: 48px; height: 3px;
+  background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  border-radius: 2px;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #888;
+  max-width: 480px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* ── GRID ── */
+.teamGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-top: 0;
+  padding: 15px 0; 
+}
+
+/* ── CARD ── */
+.cardWrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.memberCard {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  transition: border-color 0.35s ease,
+              box-shadow 0.35s ease,
+              transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+.memberCard:hover {
+  border-color: rgba(198,77,39,0.3);
+  box-shadow: 0 32px 72px rgba(0,0,0,0.45), 0 0 0 1px rgba(198,77,39,0.08);
+  transform: translateY(-6px);
+}
+
+/* ── IMAGEN ── */
+.imageWrapper {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.memberImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  filter: brightness(0.8) saturate(0.85);
+  transition: transform 0.6s ease, filter 0.4s ease;
+}
+
+.memberCard:hover .memberImage {
+  transform: scale(1.04);
+  filter: brightness(0.7) saturate(0.75);
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 35%, rgba(12,12,12,0.7) 100%);
+  pointer-events: none;
+}
+
+.roleTag {
+  position: absolute;
+  bottom: 20px; left: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(198,77,39,0.88);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 20px;
+  padding: 7px 14px;
+  color: white;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* ── CONTENIDO ── */
+.memberContent {
+  padding: 32px 36px 36px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.memberHeader { margin-bottom: 20px; }
+
+.memberName {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--text-light);
+  letter-spacing: -0.5px;
+  margin: 0 0 6px;
+  line-height: 1.2;
+}
+
+.memberRole {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--primary-color);
+}
+
+.memberDivider {
+  width: 40px; height: 2px;
+  background: linear-gradient(90deg, var(--primary-color), transparent);
+  border-radius: 2px;
+  margin-bottom: 24px;
+  transition: width 0.4s ease;
+}
+
+.memberCard:hover .memberDivider { width: 72px; }
+
+.profileBlock { 
+  margin-bottom: 18px; 
+  flex: 1; 
+}
+
+.profileText {
+  color: #8a8a8a;
+  font-size: 0.95rem; 
+  line-height: 1.75;
+  margin: 0;
+}
+
+.skillsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.skillTag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  background: rgba(198,77,39,0.08);
+  border: 1px solid rgba(198,77,39,0.2);
+  border-radius: 6px;
+  padding: 5px 12px;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.skillTag:hover {
+  background: rgba(198,77,39,0.16);
+  border-color: rgba(198,77,39,0.4);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .teamSection { padding: 80px 0; }
+  .teamGrid { grid-template-columns: 1fr; }
+  .imageWrapper { height: 260px; }
+  .memberContent { padding: 28px 24px; }
+  .heading { font-size: 2.2rem; }
+}
