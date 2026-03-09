@@ -8,43 +8,20 @@ import { Reveal } from '../../../components/Animation/Reveal';
 import GlassCard from '../../../components/UI/GlassCard/GlassCard';
 import styles from './DynamicServices.module.css';
 
+// ── IMÁGENES PROPIAS DEL CLIENTE ──
+// Renombrar los archivos en src/assets/services/ con estos nombres:
+import imgGeosinteticos  from '../../../assets/imagen10.jpeg';  // Geomembrana al atardecer ⭐
+import imgMiscelaneos    from '../../../assets/imagen16.png';  // Spool verde fabricado ⭐
+import imgHdpe           from '../../../assets/imagen19.jpg';  // Termofusión HDPE ⭐
+import imgConsultoria    from '../../../assets/imagen12.png';  // Técnicos trabajando en molino industrial
+import imgEjecucion      from '../../../assets/imagen22.jpg';  // Excavadora instalando tubería / obra civil
+import imgSupervision    from '../../../assets/imagen13.jpg';  // Reservorio con trabajadores supervisando
+import imgTopografia     from '../../../assets/imagen20.jpg';  // Vista aérea / gran escala de obra minera
+import imgExpedientes    from '../../../assets/imagen25.jpg';  // Estructuras metálicas — proceso técnico
+import imgSaneamiento    from '../../../assets/imagen24.jpg';  // Reservorio con geomembrana terminado
+
 const servicesData = [
-  {
-    id: 'expedientes',
-    title: 'Expedientes Técnicos',
-    tag: 'Documentación',
-    icon: <FileText size={22} />,
-    desc: 'Brindamos asesoría integral en el desarrollo de procesos técnicos, implementando metodologías eficientes para la elaboración de documentación estratégica.',
-    items: ['Fichas y perfiles técnicos', "Elaboración de TDR's", 'Metodologías de gestión eficiente'],
-    image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070'
-  },
-  {
-    id: 'saneamiento',
-    title: 'Saneamiento Físico-Legal',
-    tag: 'Legal',
-    icon: <Map size={22} />,
-    desc: 'Brindamos seguridad jurídica y técnica a sus activos mediante profesionales especializados en la regularización integral de inmuebles urbanos, prediales y rústicos.',
-    items: ['Independización y subdivisión', 'Rectificación de áreas y linderos', 'Habilitaciones Urbanas y Reglamentos Internos'],
-    image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2000'
-  },
-  {
-    id: 'topografia',
-    title: 'Levantamiento Topográfico',
-    tag: 'Topografía',
-    icon: <Ruler size={22} />,
-    desc: 'Garantizamos precisión y efectividad en la toma de datos mediante tecnología de vanguardia, optimizando tiempos de ejecución en cada proyecto.',
-    items: ['Fotogrametría con Drones', 'GPS Diferencial y Estaciones Totales', 'Certificación de áreas y metrados'],
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070'
-  },
-  {
-    id: 'ejecucion',
-    title: 'Ejecución Integral de Proyectos',
-    tag: 'Construcción',
-    icon: <Building2 size={22} />,
-    desc: 'Gestionamos sus obras de forma integral, desde la concepción del diseño hasta la entrega final, adaptándonos a las necesidades específicas de cada cliente.',
-    items: ['Edificación y Obras Civiles', 'Paisajismo y áreas verdes', 'Diseño de Sistemas de estabilidad de taludes'],
-    image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2000'
-  },
+  // ── MINERÍA PRIMERO ──
   {
     id: 'geosinteticos',
     title: 'Geosintéticos',
@@ -52,36 +29,7 @@ const servicesData = [
     icon: <Layers size={22} />,
     desc: 'Expertos en la implementación de sistemas de contención y protección para el sector minero y gubernamental.',
     items: ['Pads de lixiviación y Relaveras', 'Reservorios y Rellenos sanitarios', 'Sistemas de contención de tanques'],
-    /* Imagen actualizada: Minería / Movimiento de tierras */
-    image: 'https://images.unsplash.com/photo-1579969106008-017e297801be?q=80&w=2070' 
-  },
-  {
-    id: 'hdpe',
-    title: 'Tuberías HDPE',
-    tag: 'Instalaciones',
-    icon: <Pipette size={22} />,
-    desc: 'Suministramos e instalamos soluciones de polietileno de alta densidad, la opción más versátil y duradera para el transporte de fluidos críticos.',
-    items: ['Termofusión certificada', 'Redes de alcantarillado y gas', 'Fabricación de accesorios'],
-    /* Imagen actualizada: Tuberías industriales */
-    image: 'https://images.unsplash.com/photo-1585314062340-f1a5a7c9328d?q=80&w=2070'
-  },
-  {
-    id: 'supervision',
-    title: 'Supervisión de Obras',
-    tag: 'Control',
-    icon: <HardHat size={22} />,
-    desc: 'Especialistas en la gestión y control de proyectos bajo los más altos estándares de rigor técnico.',
-    items: ['Supervisión de obras civiles', 'Gestión y aseguramiento de calidad', 'Protocolos de seguridad y protección ambiental'],
-    image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2071'
-  },
-  {
-    id: 'consultoria',
-    title: 'Asesoramiento y Consultoría',
-    tag: 'Consultoría',
-    icon: <Briefcase size={22} />,
-    desc: 'Acompañamiento constante y especializado para garantizar la satisfacción del cliente.',
-    items: ['Ingeniería y Arquitectura', 'Consultoría para Minería', 'Gestión de proyectos Estatales'],
-    image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070'
+    image: imgGeosinteticos,
   },
   {
     id: 'miscelaneos',
@@ -90,9 +38,72 @@ const servicesData = [
     icon: <Wrench size={22} />,
     desc: 'Soluciones integrales en metalmecánica para la fabricación y conservación de componentes industriales de acero.',
     items: ['Fabricación de Spool', 'Fabricación de Estructuras de Acero', 'Mantenimiento y pintado'],
-    /* Imagen actualizada: Metalmecánica / Soldadura industrial */
-    image: 'https://images.unsplash.com/photo-1565034946487-077786996e27?q=80&w=2070'
-  }
+    image: imgMiscelaneos,
+  },
+  {
+    id: 'hdpe',
+    title: 'Tuberías HDPE',
+    tag: 'Instalaciones',
+    icon: <Pipette size={22} />,
+    desc: 'Suministramos e instalamos soluciones de polietileno de alta densidad, la opción más versátil y duradera para el transporte de fluidos críticos.',
+    items: ['Termofusión certificada', 'Redes de alcantarillado y gas', 'Fabricación de accesorios'],
+    image: imgHdpe,
+  },
+  {
+    id: 'consultoria',
+    title: 'Asesoramiento y Consultoría',
+    tag: 'Consultoría',
+    icon: <Briefcase size={22} />,
+    desc: 'Acompañamiento constante y especializado para garantizar la satisfacción del cliente.',
+    items: ['Ingeniería y Arquitectura', 'Consultoría para Minería', 'Gestión de proyectos Estatales'],
+    image: imgConsultoria,
+  },
+  // ── SERVICIOS GENERALES ──
+  {
+    id: 'ejecucion',
+    title: 'Ejecución Integral de Proyectos',
+    tag: 'Construcción',
+    icon: <Building2 size={22} />,
+    desc: 'Gestionamos sus obras de forma integral, desde la concepción del diseño hasta la entrega final, adaptándonos a las necesidades específicas de cada cliente.',
+    items: ['Edificación y Obras Civiles', 'Paisajismo y áreas verdes', 'Diseño de Sistemas de estabilidad de taludes'],
+    image: imgEjecucion,
+  },
+  {
+    id: 'supervision',
+    title: 'Supervisión de Obras',
+    tag: 'Control',
+    icon: <HardHat size={22} />,
+    desc: 'Especialistas en la gestión y control de proyectos bajo los más altos estándares de rigor técnico.',
+    items: ['Supervisión de obras civiles', 'Gestión y aseguramiento de calidad', 'Protocolos de seguridad y protección ambiental'],
+    image: imgSupervision,
+  },
+  {
+    id: 'topografia',
+    title: 'Levantamiento Topográfico',
+    tag: 'Topografía',
+    icon: <Ruler size={22} />,
+    desc: 'Garantizamos precisión y efectividad en la toma de datos mediante tecnología de vanguardia, optimizando tiempos de ejecución en cada proyecto.',
+    items: ['Fotogrametría con Drones', 'GPS Diferencial y Estaciones Totales', 'Certificación de áreas y metrados'],
+    image: imgTopografia,
+  },
+  {
+    id: 'expedientes',
+    title: 'Expedientes Técnicos',
+    tag: 'Documentación',
+    icon: <FileText size={22} />,
+    desc: 'Brindamos asesoría integral en el desarrollo de procesos técnicos, implementando metodologías eficientes para la elaboración de documentación estratégica.',
+    items: ['Fichas y perfiles técnicos', "Elaboración de TDR's", 'Metodologías de gestión eficiente'],
+    image: imgExpedientes,
+  },
+  {
+    id: 'saneamiento',
+    title: 'Saneamiento Físico-Legal',
+    tag: 'Legal',
+    icon: <Map size={22} />,
+    desc: 'Brindamos seguridad jurídica y técnica a sus activos mediante profesionales especializados en la regularización integral de inmuebles urbanos, prediales y rústicos.',
+    items: ['Independización y subdivisión', 'Rectificación de áreas y linderos', 'Habilitaciones Urbanas y Reglamentos Internos'],
+    image: imgSaneamiento,
+  },
 ];
 
 const DynamicServices = () => {
@@ -101,7 +112,7 @@ const DynamicServices = () => {
   return (
     <section className={styles.dynamicSection}>
 
-      {/* FONDO DINÁMICO — cambia con el servicio activo */}
+      {/* FONDO DINÁMICO */}
       <AnimatePresence mode="wait">
         <motion.div
           key={activeTab.id}
@@ -124,8 +135,8 @@ const DynamicServices = () => {
 
       {/* CONTENIDO */}
       <div className={`container ${styles.sectionInner}`}>
-        
-        {/* TÍTULO HOMOLOGADO */}
+
+        {/* TÍTULO */}
         <Reveal width="100%">
           <div className={styles.titleBlock}>
             <span className={styles.sectionLabel}>Nuestros Servicios</span>
@@ -183,7 +194,6 @@ const DynamicServices = () => {
                   <div className={styles.detailBody}>
                     <div className={styles.detailDivider} />
                     <p className={styles.detailDesc}>{activeTab.desc}</p>
-
                     <div className={styles.subServicesList}>
                       {activeTab.items.map((item, idx) => (
                         <motion.div

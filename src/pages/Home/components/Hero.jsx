@@ -1,10 +1,14 @@
 import { motion } from 'framer-motion';
 import Button from '../../../components/UI/Button/Button';
 import styles from './Hero.module.css';
+import heroBg from '../../../assets/lance-anderson-QdAAasrZhdk-unsplash.jpg';
 
 const Hero = () => {
   return (
-    <section className={styles.heroSection}>
+    <section
+  className={styles.heroSection}
+  style={{ '--hero-bg': `url(${heroBg})` }}
+>
 
       <div className={styles.heroContent}>
 

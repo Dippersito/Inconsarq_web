@@ -3,7 +3,7 @@
   --primary-color: #c64d27;
   --secondary-color: #0f0f0f; /* Fondo principal */
   --tertiary-color: #1a1a1a;
-  --text-light: #ffffff;
+  --text-light: rgb(255, 255, 255);
   --text-gray: #a3a3a3;
   --container-width: 1200px;
   --header-height: 80px;
