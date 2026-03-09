@@ -16,7 +16,7 @@
       rgba(8,8,8,0.78) 60%,
       var(--secondary-color) 100%
     ),
-    url('https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2070&auto=format&fit=crop');
+    url('../../../assets/imagen10.jpeg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
