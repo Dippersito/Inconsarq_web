@@ -1,5 +1,6 @@
 import Navbar from './Navbar';
-import Footer from './Footer'; // <--- DESCOMENTAR ESTO
+import Footer from './Footer';
+import WhatsAppButton from './WhatsAppButton'; // <-- Importar
 import styles from './Layout.module.css';
 
 const Layout = ({ children }) => {
@@ -11,7 +12,10 @@ const Layout = ({ children }) => {
         {children}
       </main>
       
-      <Footer /> {/* <--- DESCOMENTAR ESTO */}
+      <Footer />
+
+      {/* Elige la variante: 'standard' o 'themed' */}
+      <WhatsAppButton variant="themed" /> 
     </div>
   );
 };
