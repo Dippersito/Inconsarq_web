@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Reveal } from '../../../components/Animation/Reveal';
 import styles from './ContactHero.module.css';
 

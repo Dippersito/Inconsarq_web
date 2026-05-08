@@ -91,6 +91,26 @@
   height: 20px;
   cursor: pointer;
   z-index: 1002;
+  /* Reset de estilos default del <button> nativo */
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  font: inherit;
+  color: inherit;
+}
+
+/* Quitar outline al click (mouse) pero mantener uno accesible al tab (teclado) */
+.hamburger:focus {
+  outline: none;
+}
+
+.hamburger:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 6px;
+  border-radius: 2px;
 }
 
 .hamburger span {
