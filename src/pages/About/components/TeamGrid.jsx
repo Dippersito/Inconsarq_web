@@ -4,8 +4,8 @@ import { HardHat, Briefcase } from 'lucide-react';
 import styles from './TeamGrid.module.css';
 
 // 1. IMPORTAMOS LAS IMÁGENES LOCALES DESDE ASSETS
-import fotoJuan from '../../../assets/foto_juan.png';
-import fotoJulissa from '../../../assets/foto_julissa.png';
+import fotoJuan from '../../../assets/foto_juan.webp';
+import fotoJulissa from '../../../assets/foto_julissa.webp';
 
 const TEAM = [
   {
@@ -64,8 +64,10 @@ const TeamGrid = () => {
                 <div className={styles.imageWrapper}>
                   <img
                     src={member.image}
-                    alt={member.name}
+                    alt={`Foto de ${member.name}, ${member.role} en INCONSARQ`}
                     className={styles.memberImage}
+                    loading="lazy"
+                    decoding="async"
                   />
                   <div className={styles.imageOverlay} />
                   <div className={styles.roleTag}>

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import Button from '../../../components/UI/Button/Button';
 import styles from './Hero.module.css';
-import heroBg from '../../../assets/home_hero.png';
+import heroBg from '../../../assets/home_hero.webp';
 
 const Hero = () => {
   return (
