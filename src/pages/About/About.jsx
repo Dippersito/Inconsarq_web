@@ -3,7 +3,6 @@ import AboutHero from './components/AboutHero';
 import WhoWeAre from './components/WhoWeAre';
 import MissionVision from './components/MissionVision';
 import Values from './components/Values';
-import OurHistory from './components/OurHistory';
 import TeamGrid from './components/TeamGrid';
 import styles from './About.module.css';
 
@@ -20,7 +19,6 @@ const About = () => {
       <WhoWeAre />
       <MissionVision />
       <Values />
-      <OurHistory />
       <TeamGrid />
     </motion.div>
   );
