@@ -1,39 +1,66 @@
-import { useState, useRef } from 'react'; // <--- Añadido useRef
-import emailjs from '@emailjs/browser';   // <--- Añadida librería
+import { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import { Reveal } from '../../../components/Animation/Reveal';
-import { Send, User, Mail, Phone, MessageSquare, CheckCircle2 } from 'lucide-react';
+import { Send, User, Mail, Phone, MessageSquare, CheckCircle2, AlertCircle } from 'lucide-react';
+import { site } from '../../../config/site';
 import styles from './ContactForm.module.css';
 
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+const IS_CONFIGURED = Boolean(SERVICE_ID && TEMPLATE_ID && PUBLIC_KEY);
+
+const SERVICES = [
+  'Expedientes Técnicos',
+  'Saneamiento Físico-Legal',
+  'Levantamiento Topográfico',
+  'Ejecución Integral de Proyectos',
+  'Geosintéticos',
+  'Tuberías HDPE',
+  'Supervisión de Obras',
+  'Asesoramiento y Consultoría',
+  'Servicios Misceláneos',
+  'Otro',
+];
+
 const ContactForm = () => {
-  const form = useRef(); // Referencia para el formulario
-  const [sent, setSent] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const form = useRef(null);
+  const [status, setStatus] = useState('idle'); // 'idle' | 'loading' | 'success' | 'error'
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
 
-    // Configuración de EmailJS
-    emailjs.sendForm(
-      'YOUR_SERVICE_ID',   // Reemplaza con tu Service ID
-      'YOUR_TEMPLATE_ID',  // Reemplaza con tu Template ID
-      form.current,
-      'YOUR_PUBLIC_KEY'    // Reemplaza con tu Public Key
-    )
-    .then((result) => {
-      setLoading(false);
-      setSent(true);
-    }, (error) => {
-      setLoading(false);
-      alert("Lo sentimos, hubo un error al enviar el mensaje. Inténtalo de nuevo.");
-      console.log(error.text);
-    });
+    if (!IS_CONFIGURED) {
+      setErrorMessage(
+        `El formulario aún no está configurado. Escríbenos directamente a ${site.contact.email} o por WhatsApp.`
+      );
+      setStatus('error');
+      return;
+    }
+
+    setStatus('loading');
+    setErrorMessage('');
+
+    try {
+      await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY);
+      setStatus('success');
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      setErrorMessage(
+        `No pudimos enviar tu mensaje. Probá de nuevo o escribinos a ${site.contact.email}.`
+      );
+      setStatus('error');
+    }
   };
+
+  const isLoading = status === 'loading';
+  const isSent = status === 'success';
+  const hasError = status === 'error';
 
   return (
     <Reveal delay={0.15}>
       <div className={styles.formCard}>
-        {/* Cabecera */}
         <div className={styles.formHeader}>
           <span className={styles.formEyebrow}>Formulario de contacto</span>
           <h2 className={styles.formTitle}>Envíanos un mensaje</h2>
@@ -42,7 +69,7 @@ const ContactForm = () => {
           </p>
         </div>
 
-        {sent ? (
+        {isSent ? (
           <div className={styles.successState}>
             <div className={styles.successIcon}>
               <CheckCircle2 size={40} />
@@ -51,71 +78,77 @@ const ContactForm = () => {
             <p>Gracias por contactarnos. Nos comunicaremos contigo a la brevedad.</p>
           </div>
         ) : (
-          <form ref={form} onSubmit={handleSubmit} className={styles.form}>
+          <form ref={form} onSubmit={handleSubmit} className={styles.form} noValidate>
             <div className={styles.row}>
               <div className={styles.inputGroup}>
-                <label className={styles.label}>
+                <label className={styles.label} htmlFor="contact-name">
                   <User size={13} /> Nombre completo
                 </label>
                 <input
+                  id="contact-name"
                   type="text"
-                  name="user_name" // <--- Importante para EmailJS
+                  name="user_name"
                   className={styles.input}
                   placeholder="Ej: Juan Pérez"
                   required
+                  autoComplete="name"
                 />
               </div>
               <div className={styles.inputGroup}>
-                <label className={styles.label}>
+                <label className={styles.label} htmlFor="contact-phone">
                   <Phone size={13} /> Teléfono
                 </label>
                 <input
+                  id="contact-phone"
                   type="tel"
-                  name="user_phone" // <--- Importante
+                  name="user_phone"
                   className={styles.input}
                   placeholder="+51 900 000 000"
+                  autoComplete="tel"
                 />
               </div>
             </div>
 
             <div className={styles.inputGroup}>
-              <label className={styles.label}>
+              <label className={styles.label} htmlFor="contact-email">
                 <Mail size={13} /> Correo electrónico
               </label>
               <input
+                id="contact-email"
                 type="email"
-                name="user_email" // <--- Importante
+                name="user_email"
                 className={styles.input}
                 placeholder="juan@ejemplo.com"
                 required
+                autoComplete="email"
               />
             </div>
 
             <div className={styles.inputGroup}>
-              <label className={styles.label}>
+              <label className={styles.label} htmlFor="contact-service">
                 <MessageSquare size={13} /> Servicio de interés
               </label>
-              <select name="service" className={styles.input} defaultValue="" required>
+              <select
+                id="contact-service"
+                name="service"
+                className={styles.input}
+                defaultValue=""
+                required
+              >
                 <option value="" disabled>Selecciona un servicio...</option>
-                <option value="Expedientes Técnicos">Expedientes Técnicos</option>
-                <option value="Saneamiento Físico-Legal">Saneamiento Físico-Legal</option>
-                <option value="Levantamiento Topográfico">Levantamiento Topográfico</option>
-                <option value="Ejecución Integral de Proyectos">Ejecución Integral de Proyectos</option>
-                <option value="Geosintéticos">Geosintéticos</option>
-                <option value="Tuberías HDPE">Tuberías HDPE</option>
-                <option value="Supervisión de Obras">Supervisión de Obras</option>
-                <option value="Asesoramiento y Consultoría">Asesoramiento y Consultoría</option>
-                <option value="Servicios Misceláneos">Servicios Misceláneos</option>
-                <option value="Otro">Otro</option>
+                {SERVICES.map((s) => (
+                  <option key={s} value={s}>{s}</option>
+                ))}
               </select>
             </div>
 
             <div className={styles.inputGroup}>
-              <label className={styles.label}>
+              <label className={styles.label} htmlFor="contact-message">
                 <MessageSquare size={13} /> Mensaje
               </label>
               <textarea
-                name="message" // <--- Importante
+                id="contact-message"
+                name="message"
                 className={`${styles.input} ${styles.textarea}`}
                 rows={5}
                 placeholder="Cuéntanos sobre tu proyecto, ubicación y requerimientos..."
@@ -123,13 +156,20 @@ const ContactForm = () => {
               />
             </div>
 
+            {hasError && (
+              <div role="alert" className={styles.errorBanner}>
+                <AlertCircle size={18} />
+                <span>{errorMessage}</span>
+              </div>
+            )}
+
             <button
               type="submit"
-              className={`${styles.submitBtn} ${loading ? styles.loading : ''}`}
-              disabled={loading}
+              className={`${styles.submitBtn} ${isLoading ? styles.loading : ''}`}
+              disabled={isLoading}
             >
-              {loading ? (
-                <span className={styles.spinner} />
+              {isLoading ? (
+                <span className={styles.spinner} aria-label="Enviando" />
               ) : (
                 <>
                   <span>Enviar Mensaje</span>

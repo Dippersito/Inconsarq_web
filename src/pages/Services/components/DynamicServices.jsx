@@ -10,15 +10,17 @@ import styles from './DynamicServices.module.css';
 
 // ── IMÁGENES PROPIAS DEL CLIENTE ──
 // Renombrar los archivos en src/assets/services/ con estos nombres:
-import imgGeosinteticos  from '../../../assets/imagen10.jpeg';  // Geomembrana al atardecer ⭐
-import imgMiscelaneos    from '../../../assets/imagen16.png';  // Spool verde fabricado ⭐
-import imgHdpe           from '../../../assets/imagen19.jpg';  // Termofusión HDPE ⭐
-import imgConsultoria    from '../../../assets/imagen12.png';  // Técnicos trabajando en molino industrial
-import imgEjecucion      from '../../../assets/imagen22.jpg';  // Excavadora instalando tubería / obra civil
-import imgSupervision    from '../../../assets/imagen13.jpg';  // Reservorio con trabajadores supervisando
-import imgTopografia     from '../../../assets/imagen20.jpg';  // Vista aérea / gran escala de obra minera
-import imgExpedientes    from '../../../assets/imagen25.jpg';  // Estructuras metálicas — proceso técnico
-import imgSaneamiento    from '../../../assets/imagen24.jpg';  // Reservorio con geomembrana terminado
+import imgGeosinteticos  from '../../../assets/imagen10.webp';
+import imgMiscelaneos    from '../../../assets/imagen16.webp';
+import imgEjecucion      from '../../../assets/imagen22.webp';
+// JPGs/PNGs originales: el WebP a quality 80 sobre estas fuentes ya
+// muy comprimidas resultaba más pesado que el original — ver script optimize-images.mjs.
+import imgHdpe           from '../../../assets/imagen19.jpg';
+import imgConsultoria    from '../../../assets/imagen12.png';
+import imgSupervision    from '../../../assets/imagen13.jpg';
+import imgTopografia     from '../../../assets/imagen20.jpg';
+import imgExpedientes    from '../../../assets/imagen25.jpg';
+import imgSaneamiento    from '../../../assets/imagen24.jpg';
 
 const servicesData = [
   // ── MINERÍA PRIMERO ──

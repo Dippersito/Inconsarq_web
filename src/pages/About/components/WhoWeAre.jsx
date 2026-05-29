@@ -1,5 +1,6 @@
 import { Reveal } from '../../../components/Animation/Reveal';
 import { MapPin } from 'lucide-react';
+import whoWeAreImg from '../../../assets/imagen13.jpg';
 import styles from './WhoWeAre.module.css';
 
 const STATS = [
@@ -32,9 +33,11 @@ const WhoWeAre = () => {
             <Reveal>
               <div className={styles.imageFrame}>
                 <img
-                  src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2000&auto=format&fit=crop"
-                  alt="Equipo INCONSARQ"
+                  src={whoWeAreImg}
+                  alt="Equipo de INCONSARQ supervisando obra en Arequipa, Perú"
                   className={styles.whoImage}
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className={styles.imageOverlay} />
                 <div className={styles.locationTag}>

@@ -1,32 +1,31 @@
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, Mail, Facebook, Instagram, Linkedin, MessageCircle } from 'lucide-react'; 
-// 1. Importamos el logo
-import logoImg from '../../assets/Nuevo_logo_202020.png'; 
+import { MapPin, Phone, Mail, MessageCircle } from 'lucide-react';
+import { site } from '../../config/site';
+import logoImg from '../../assets/Nuevo_logo_202020.webp';
 import styles from './Footer.module.css';
 
 const Footer = () => {
-  
-  // Función para llevar al usuario arriba suavemente
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
+  const whatsappUrl = `https://wa.me/${site.whatsapp.number}`;
 
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        
-        {/* SECCIÓN 1: CONTACTO E INFORMACIÓN */}
+
         <div className={styles.column}>
-          {/* Logo con Imagen */}
-          <Link to="/" className={styles.logo} onClick={scrollToTop}>
-            <img src={logoImg} alt="INCONSARQ Logo" className={styles.logoImage} />
+          <Link to="/" className={styles.logo}>
+            <img
+              src={logoImg}
+              alt={`${site.brand.name} Logo`}
+              className={styles.logoImage}
+              loading="lazy"
+              decoding="async"
+              width="160"
+              height="48"
+            />
           </Link>
-          
+
           <p className={styles.description}>
-            Ingeniería, Construcción y Arquitectura con estándares de calidad superior.
+            {site.brand.fullName} con estándares de calidad superior.
           </p>
 
           <div className={styles.contactInfo}>
@@ -34,56 +33,62 @@ const Footer = () => {
               <span className={styles.iconWrapper}><Phone size={18} /></span>
               <div>
                 <p className={styles.contactLabel}>Representante</p>
-                <p>Julissa Vitorino: +51 940 850 179</p>
+                <p>{site.contact.representative}: {site.contact.phone}</p>
               </div>
             </div>
 
             <div className={styles.contactItem}>
               <span className={styles.iconWrapper}><Mail size={18} /></span>
-              <p>jvitorino@inconsarq.com</p>
+              <a href={`mailto:${site.contact.email}`} className={styles.mapLink}>
+                {site.contact.email}
+              </a>
             </div>
 
             <div className={styles.contactItem}>
               <span className={styles.iconWrapper}><MapPin size={18} /></span>
-              <a 
-                href="https://goo.gl/maps/tu-direccion-aqui" 
-                target="_blank" 
+              <a
+                href={site.contact.location.mapsUrl}
+                target="_blank"
                 rel="noopener noreferrer"
                 className={styles.mapLink}
               >
-                Ver ubicación en Mapa
+                {site.contact.location.addressShort}
               </a>
             </div>
           </div>
         </div>
 
-        {/* SECCIÓN 2: RUTAS (ENLACES RÁPIDOS) */}
         <div className={`${styles.column} ${styles.centerColumn}`}>
           <h3>Enlaces Rápidos</h3>
           <ul className={styles.linksList}>
-            <li><Link to="/" onClick={scrollToTop}>Inicio</Link></li>
-            <li><Link to="/nosotros" onClick={scrollToTop}>Nosotros</Link></li>
-            <li><Link to="/servicios" onClick={scrollToTop}>Servicios</Link></li>
-            <li><Link to="/contacto" onClick={scrollToTop}>Contacto</Link></li>
+            <li><Link to="/">Inicio</Link></li>
+            <li><Link to="/nosotros">Nosotros</Link></li>
+            <li><Link to="/servicios">Servicios</Link></li>
+            <li><Link to="/contacto">Contacto</Link></li>
           </ul>
         </div>
 
-        {/* SECCIÓN 3: SÍGUENOS (REDES SOCIALES) */}
         <div className={styles.column}>
-          <h3>Síguenos</h3>
-          <p className={styles.socialText}>Conecta con nosotros en nuestras redes.</p>
-          
+          <h3>Hablemos</h3>
+          <p className={styles.socialText}>
+            Comunícate directamente con nosotros.
+          </p>
+
           <div className={styles.socialGrid}>
-            <a href="https://facebook.com" target="_blank" rel="noreferrer" className={styles.socialIcon} aria-label="Facebook">
-              <Facebook size={24} />
+            <a
+              href={`mailto:${site.contact.email}`}
+              className={styles.socialIcon}
+              aria-label="Enviar correo"
+            >
+              <Mail size={24} />
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" className={styles.socialIcon} aria-label="Instagram">
-              <Instagram size={24} />
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className={styles.socialIcon} aria-label="LinkedIn">
-              <Linkedin size={24} />
-            </a>
-            <a href="https://wa.me/51940850179" target="_blank" rel="noreferrer" className={styles.socialIcon} aria-label="WhatsApp">
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noreferrer"
+              className={styles.socialIcon}
+              aria-label="Contactar por WhatsApp"
+            >
               <MessageCircle size={24} />
             </a>
           </div>
@@ -91,9 +96,8 @@ const Footer = () => {
 
       </div>
 
-      {/* COPYRIGHT */}
       <div className={styles.copyright}>
-        <p>&copy; {new Date().getFullYear()} INCONSARQ. Todos los derechos reservados.</p>
+        <p>&copy; {new Date().getFullYear()} {site.brand.name}. Todos los derechos reservados.</p>
       </div>
     </footer>
   );

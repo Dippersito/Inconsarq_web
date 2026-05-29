@@ -3,32 +3,35 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Reveal } from '../../../components/Animation/Reveal';
+import imgGeosinteticos from '../../../assets/imagen10.webp';
+import imgHdpe from '../../../assets/imagen19.jpg';
+import imgEjecucion from '../../../assets/imagen22.webp';
 import styles from './ServicesCarousel.module.css';
 
 const services = [
   {
     id: 1,
-    title: 'Arquitectura & Diseño',
-    tag: 'Diseño',
-    desc: 'Creamos espacios que inspiran. Desde el boceto inicial hasta los planos ejecutivos, fusionamos estética y funcionalidad.',
-    image: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2000&auto=format&fit=crop',
-    stat: { value: '+120', label: 'Proyectos' },
+    title: 'Geosintéticos',
+    tag: 'Minería',
+    desc: 'Implementamos sistemas de contención y protección con geomembranas para el sector minero y gubernamental: pads de lixiviación, relaveras y reservorios.',
+    image: imgGeosinteticos,
+    stat: { value: '+10', label: 'Años especializados' },
   },
   {
     id: 2,
-    title: 'Ingeniería Civil',
-    tag: 'Ingeniería',
-    desc: 'Cálculos precisos y estructuras sólidas. Garantizamos la seguridad y normatividad en cada metro cuadrado construido.',
-    image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2000&auto=format&fit=crop',
-    stat: { value: '100%', label: 'Normativa' },
+    title: 'Tuberías HDPE',
+    tag: 'Instalaciones',
+    desc: 'Soluciones en polietileno de alta densidad para fluidos críticos. Termofusión certificada, redes de alcantarillado, gas y fabricación de accesorios.',
+    image: imgHdpe,
+    stat: { value: '100%', label: 'Calidad certificada' },
   },
   {
     id: 3,
-    title: 'Gestión de Proyectos',
-    tag: 'Gestión',
-    desc: 'Optimizamos recursos y tiempos. Tu obra entregada en plazo, bajo presupuesto y con los estándares más altos.',
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2000&auto=format&fit=crop',
-    stat: { value: '100%', label: 'Satisfacción' },
+    title: 'Ejecución Integral de Proyectos',
+    tag: 'Construcción',
+    desc: 'Gestionamos obras de extremo a extremo: desde el diseño hasta la entrega final. Edificación, obras civiles y diseño de sistemas de estabilidad de taludes.',
+    image: imgEjecucion,
+    stat: { value: '+120', label: 'Proyectos completados' },
   },
 ];
 
@@ -88,8 +91,10 @@ const ServicesCarousel = () => {
               <motion.img
                 key={currentIndex}
                 src={current.image}
-                alt={current.title}
+                alt={`${current.title} — INCONSARQ`}
                 className={styles.carouselMainImage}
+                loading={currentIndex === 0 ? 'eager' : 'lazy'}
+                decoding="async"
                 initial={{ opacity: 0, scale: 1.06 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.98 }}

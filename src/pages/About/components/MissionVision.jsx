@@ -58,10 +58,6 @@ const MissionVision = () => {
               transition={{ delay: item.delay, duration: 0.5 }}
             >
               <div className={styles.mvCard}>
-                {/* Marca de agua centrada */}
-                <span className={styles.mvNumber}>{item.number}</span>
-                
-                {/* Brillo interno al hacer hover */}
                 <div className={styles.cardHoverGlow} />
 
                 <div className={styles.cardContent}>
