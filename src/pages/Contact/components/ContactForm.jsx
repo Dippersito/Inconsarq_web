@@ -78,7 +78,7 @@ const ContactForm = () => {
             <p>Gracias por contactarnos. Nos comunicaremos contigo a la brevedad.</p>
           </div>
         ) : (
-          <form ref={form} onSubmit={handleSubmit} className={styles.form} noValidate>
+          <form ref={form} onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.row}>
               <div className={styles.inputGroup}>
                 <label className={styles.label} htmlFor="contact-name">

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import Seo from '../../components/Seo/Seo';
 import Hero from './components/Hero';
 import WhoWeAreHome from './components/WhoWeAreHome';
 import ServicesCarousel from './components/ServicesCarousel';
@@ -14,6 +15,11 @@ const Home = () => {
       transition={{ duration: 0.5 }}
       className={styles.homeContainer}
     >
+      <Seo
+        title="INCONSARQ — Ingeniería, Construcción y Arquitectura | Arequipa, Perú"
+        description="Empresa peruana especializada en geosintéticos, tuberías HDPE, supervisión de obras, expedientes técnicos y saneamiento físico-legal. +10 años construyendo confianza desde Arequipa."
+        path="/"
+      />
       <Hero />
       <WhoWeAreHome />
       <ServicesCarousel />

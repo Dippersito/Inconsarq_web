@@ -6,13 +6,18 @@
     <meta name="theme-color" content="#c64d27" />
 
     <!-- Primary Meta Tags -->
+    <!--
+      El <title>, <meta name="description"> y <link rel="canonical"> se definen
+      por página con el componente <Seo> (src/components/Seo/Seo.jsx), usando el
+      hoisting nativo de React 19. NO agregar aquí versiones estáticas: duplicarían
+      el canonical y el título en cada ruta. Googlebot renderiza el JS y los lee.
+      Las etiquetas Open Graph / Twitter de abajo SÍ son estáticas a propósito:
+      los scrapers de redes (Facebook, WhatsApp, X) no ejecutan JavaScript.
+    -->
     <title>INCONSARQ — Ingeniería, Construcción y Arquitectura | Arequipa, Perú</title>
-    <meta name="title" content="INCONSARQ — Ingeniería, Construcción y Arquitectura" />
-    <meta name="description" content="Empresa peruana especializada en geosintéticos, tuberías HDPE, supervisión de obras, expedientes técnicos y saneamiento físico-legal. +10 años construyendo confianza desde Arequipa." />
     <meta name="keywords" content="ingeniería, construcción, arquitectura, geosintéticos, HDPE, termofusión, Arequipa, Perú, supervisión de obras, expedientes técnicos, saneamiento físico-legal, topografía, minería" />
     <meta name="author" content="INCONSARQ" />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://inconsarq.com/" />
 
     <!-- Favicons -->
     <link rel="icon" type="image/png" href="/favicon.png" />
@@ -23,7 +28,8 @@
     <meta property="og:url" content="https://inconsarq.com/" />
     <meta property="og:title" content="INCONSARQ — Ingeniería, Construcción y Arquitectura" />
     <meta property="og:description" content="Especialistas en geosintéticos, tuberías HDPE, obras civiles y consultoría. +10 años construyendo confianza en Arequipa, Perú." />
-    <meta property="og:image" content="https://inconsarq.com/og-image.png" />
+    <meta property="og:image" content="https://inconsarq.com/og-image.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="INCONSARQ — Ingeniería, Construcción y Arquitectura" />
@@ -35,11 +41,7 @@
     <meta name="twitter:url" content="https://inconsarq.com/" />
     <meta name="twitter:title" content="INCONSARQ — Ingeniería, Construcción y Arquitectura" />
     <meta name="twitter:description" content="Especialistas en geosintéticos, HDPE, obras civiles y consultoría. Arequipa, Perú." />
-    <meta name="twitter:image" content="https://inconsarq.com/og-image.png" />
-
-    <!-- Performance / Preconnect -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta name="twitter:image" content="https://inconsarq.com/og-image.jpg" />
 
     <!-- JSON-LD Structured Data: Organización local -->
     <script type="application/ld+json">
@@ -52,7 +54,7 @@
       "description": "Empresa especializada en geosintéticos, tuberías HDPE, supervisión de obras civiles, expedientes técnicos y saneamiento físico-legal en Perú.",
       "url": "https://inconsarq.com",
       "logo": "https://inconsarq.com/favicon.png",
-      "image": "https://inconsarq.com/og-image.png",
+      "image": "https://inconsarq.com/og-image.jpg",
       "telephone": "+51-940-850-179",
       "email": "jvitorinob@inconsarq.com",
       "address": {

@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
 import Layout from './components/Layout/Layout';
@@ -32,6 +32,8 @@ function App() {
             <Route path="/nosotros" element={<About />} />
             <Route path="/servicios" element={<Services />} />
             <Route path="/contacto" element={<Contact />} />
+            {/* Cualquier ruta inexistente redirige al inicio (evita pantalla en blanco) */}
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </AnimatePresence>
       </Suspense>
