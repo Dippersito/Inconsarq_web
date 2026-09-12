@@ -48,7 +48,7 @@ const ContactForm = () => {
     } catch (error) {
       console.error('EmailJS error:', error);
       setErrorMessage(
-        `No pudimos enviar tu mensaje. Probá de nuevo o escribinos a ${site.contact.email}.`
+        `No pudimos enviar tu mensaje. Intenta de nuevo o escríbenos a ${site.contact.email}.`
       );
       setStatus('error');
     }

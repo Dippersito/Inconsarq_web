@@ -3,17 +3,20 @@ import { Link } from 'react-router-dom';
 import styles from './Button.module.css';
 
 const Button = ({ text, to, onClick, variant = 'primary', type = 'button' }) => {
-  // Si tiene "to", funciona como Link, si no, como botón normal
+  // Si tiene "to", funciona como Link (<a>); si no, como botón animado.
   const Component = to ? Link : motion.button;
-  
+
+  // Props exclusivas de cada modo: un <a> no debe recibir type="button",
+  // y motion.button no recibe "to".
+  const modeProps = to
+    ? { to }
+    : { type, whileHover: { scale: 1.05 }, whileTap: { scale: 0.95 } };
+
   return (
     <Component
-      to={to}
       onClick={onClick}
-      type={type}
       className={`${styles.btn} ${styles[variant]}`}
-      // Props de animación solo si es motion.button (Link no acepta whileHover directo igual)
-      {...(to ? {} : { whileHover: { scale: 1.05 }, whileTap: { scale: 0.95 } })}
+      {...modeProps}
     >
       {text}
       <div className={styles.glow} />

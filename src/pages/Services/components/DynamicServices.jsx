@@ -188,7 +188,7 @@ const DynamicServices = () => {
                     </div>
                     <div className={styles.cardHeaderText}>
                       <span className={styles.serviceTag}>{activeTab.tag}</span>
-                      <h2 className={styles.cardTitle}>{activeTab.title}</h2>
+                      <h3 className={styles.cardTitle}>{activeTab.title}</h3>
                     </div>
                   </div>
 

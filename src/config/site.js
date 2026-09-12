@@ -16,7 +16,7 @@ export const site = {
     representative: 'Julissa Vitorino',
     phone: '+51 940 850 179',
     phoneTel: '+51940850179', // sin espacios, para href="tel:"
-    email: 'jvitorinob@inconsarq.com',
+    email: 'comercial@inconsarq.com', // buzón comercial (grupo): ventas@ y cotizaciones@ caen aquí
     location: {
       city: 'Arequipa',
       district: 'Cerro Colorado',

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import Seo from '../../components/Seo/Seo';
 import ContactHero from './components/ContactHero';
 import ContactInfo from './components/ContactInfo';
 import ContactForm from './components/ContactForm';
@@ -13,6 +14,11 @@ const Contact = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
+      <Seo
+        title="Contacto — INCONSARQ | Cotiza tu proyecto en Arequipa"
+        description="Contáctanos para cotizar tu proyecto de ingeniería o construcción. Estamos en Cerro Colorado, Arequipa. Escríbenos por el formulario o por WhatsApp."
+        path="/contacto"
+      />
       <ContactHero />
 
       <section className={styles.contactSection}>
