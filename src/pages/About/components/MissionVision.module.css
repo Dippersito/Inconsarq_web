@@ -11,7 +11,7 @@
 .mvBg {
   position: absolute;
   inset: 0;
-  background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop');
+  background-image: url('../../../assets/fondos/mision-obra.webp');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -70,7 +70,7 @@
   font-weight: 700;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--primary-color);
+  color: var(--primary-text);
   margin-bottom: 18px;
 }
 
@@ -161,24 +161,6 @@
 
 .mvCard:hover .cardHoverGlow { opacity: 1; }
 
-.mvNumber {
-  position: absolute;
-  top: 50%; 
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 14rem;
-  font-weight: 900;
-  color: rgba(255, 255, 255, 0.015);
-  line-height: 1;
-  letter-spacing: -5px;
-  user-select: none;
-  pointer-events: none;
-  z-index: 1;
-  transition: color 0.4s ease;
-}
-
-.mvCard:hover .mvNumber { color: rgba(198, 77, 39, 0.035); }
-
 .cardContent {
   position: relative;
   z-index: 2; 
@@ -237,10 +219,12 @@
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .missionSection { padding: 100px 0; }
-  .mvBg { background-attachment: scroll; } 
+  .mvBg {
+    background-image: url('../../../assets/fondos/mision-obra-movil.webp');
+    background-attachment: scroll;
+  }
   .heading { font-size: 2.8rem; letter-spacing: -1px; }
   .mvGrid { grid-template-columns: 1fr; gap: 30px; }
   .mvCard { padding: 40px 30px; }
   .mvTitle { font-size: 1.6rem; }
-  .mvNumber { font-size: 10rem; }
 }

@@ -144,7 +144,7 @@
   padding-top: 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   font-size: 0.85rem;
-  color: #666;
+  color: #8c8c8c; /* #666 no llegaba al contraste mínimo (4.5:1) sobre #0a0a0a */
 }
 
 /* ── RESPONSIVE ── */

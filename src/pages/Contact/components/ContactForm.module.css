@@ -25,9 +25,8 @@
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--primary-color);
+  color: var(--primary-text);
   margin-bottom: 10px;
-  opacity: 0.85;
 }
 
 .formTitle {
@@ -40,7 +39,7 @@
 
 .formSubtitle {
   font-size: 0.85rem;
-  color: #727272;
+  color: #8f8f8f; /* #727272 no llegaba al contraste mínimo (4.5:1) */
   margin: 0;
   line-height: 1.6;
 }
@@ -113,9 +112,25 @@ select.input {
   color: rgba(255,255,255,0.5);
 }
 
+/* Con un servicio elegido el texto pasa a blanco (antes quedaba gris como el
+   placeholder y parecía que no se había seleccionado nada). */
+select.input:valid {
+  color: var(--text-light);
+}
+
 select.input option {
   background: #1a1a1a;
   color: white;
+}
+
+/* Campo trampa anti-spam: fuera de pantalla (no display:none, que algunos
+   bots detectan y saltan). */
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 .textarea {
@@ -209,6 +224,10 @@ select.input option {
   color: var(--text-light);
   letter-spacing: -0.5px;
   margin: 0;
+}
+
+.successState h3:focus {
+  outline: none; /* recibe foco por código, no por navegación */
 }
 
 .successState p {

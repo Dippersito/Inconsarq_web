@@ -54,12 +54,17 @@
   gap: 40px;
 }
 
+.link,
+.activeLink {
+  font-size: 1rem;
+  transition: color 0.3s;
+  position: relative; /* referencia del subrayado ::after */
+  padding: 6px 0;
+}
+
 .link {
   color: var(--text-gray);
   font-weight: 500;
-  font-size: 1rem;
-  transition: color 0.3s;
-  position: relative;
 }
 
 .link:hover {
@@ -67,19 +72,36 @@
 }
 
 .activeLink {
-  color: var(--primary-color);
+  color: var(--primary-text);
   font-weight: 600;
 }
 
+/* Subrayado: crece desde la izquierda al pasar el mouse y queda fijo en la
+   página activa. Antes el ::after no tenía referencia de posición y la línea
+   se estiraba hasta el borde derecho de la pantalla. */
+.link::after,
 .activeLink::after {
   content: '';
-  display: block;
+  position: absolute;
+  left: 0;
+  bottom: -2px;
   width: 100%;
   height: 2px;
+  border-radius: 2px;
   background: var(--primary-color);
-  position: absolute;
-  bottom: -4px;
-  box-shadow: 0 0 10px var(--primary-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.link:hover::after {
+  transform: scaleX(0.6);
+  opacity: 0.6;
+}
+
+.activeLink::after {
+  transform: scaleX(1);
+  box-shadow: 0 0 10px rgba(198, 77, 39, 0.6);
 }
 
 /* HAMBURGER MENU */
@@ -140,6 +162,7 @@
   right: 0;
   width: 100%;
   height: 100vh;
+  height: 100dvh; /* en celular descuenta la barra del navegador */
   background: var(--secondary-color);
   z-index: 1001;
   display: flex;
@@ -161,7 +184,8 @@
   transition: color 0.3s;
 }
 
-.mobileLinksContainer a:hover {
+.mobileLinksContainer a:hover,
+.mobileLinksContainer a[aria-current='page'] {
   color: var(--primary-color);
 }
 

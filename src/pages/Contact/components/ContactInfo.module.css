@@ -15,7 +15,7 @@
   font-weight: 700;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--primary-color);
+  color: var(--primary-text);
   margin-bottom: 18px;
 }
 
@@ -108,7 +108,7 @@
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.55); /* 0.35 no llegaba al contraste mínimo */
 }
 
 .infoValue {
@@ -124,18 +124,18 @@ a.infoValue:hover {
   color: var(--primary-color);
 }
 
-/* Tagline */
+/* Tagline: recuadro con el mismo borde en los cuatro lados (sin franja lateral) */
 .tagline {
   padding: 20px 24px;
-  border-left: 3px solid var(--primary-color);
-  background: linear-gradient(90deg, rgba(198,77,39,0.07), transparent);
-  border-radius: 0 12px 12px 0;
+  border: 1px solid rgba(198,77,39,0.2);
+  background: linear-gradient(135deg, rgba(198,77,39,0.08), rgba(198,77,39,0.02));
+  border-radius: 14px;
 }
 
 .tagline span {
   font-size: 0.95rem;
   font-style: italic;
-  color: #909090;
+  color: #b0b0b0;
   font-weight: 500;
 }
 

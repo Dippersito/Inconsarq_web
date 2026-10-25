@@ -1,7 +1,9 @@
 import { Reveal } from '../../../components/Animation/Reveal';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin, MessageCircle } from 'lucide-react';
 import { site } from '../../../config/site';
 import styles from './ContactInfo.module.css';
+
+const whatsappUrl = `https://wa.me/${site.whatsapp.number}?text=${encodeURIComponent(site.whatsapp.defaultMessage)}`;
 
 const INFO_ITEMS = [
   {
@@ -17,6 +19,13 @@ const INFO_ITEMS = [
     lines: [site.contact.phone],
     link: `tel:${site.contact.phoneTel}`,
     delay: 0.2,
+  },
+  {
+    icon: <MessageCircle size={20} />,
+    label: 'WhatsApp',
+    lines: ['Escríbenos ahora'],
+    link: whatsappUrl,
+    delay: 0.25,
   },
   {
     icon: <Mail size={20} />,
@@ -58,7 +67,7 @@ const ContactInfo = () => {
                     href={item.link}
                     className={styles.infoValue}
                     target={item.link.startsWith('http') ? '_blank' : undefined}
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                   >
                     {item.lines.join(' · ')}
                   </a>

@@ -2,13 +2,14 @@ import { motion } from 'framer-motion';
 import Button from '../../../components/UI/Button/Button';
 import styles from './Hero.module.css';
 import heroBg from '../../../assets/home_hero.webp';
+import heroBgMovil from '../../../assets/home_hero-movil.webp';
 
 const Hero = () => {
   return (
     <section
-  className={styles.heroSection}
-  style={{ '--hero-bg': `url(${heroBg})` }}
->
+      className={styles.heroSection}
+      style={{ '--hero-bg': `url(${heroBg})`, '--hero-bg-movil': `url(${heroBgMovil})` }}
+    >
 
       <div className={styles.heroContent}>
 

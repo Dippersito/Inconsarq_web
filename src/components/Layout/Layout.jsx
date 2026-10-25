@@ -6,9 +6,12 @@ import styles from './Layout.module.css';
 const Layout = ({ children }) => {
   return (
     <div className={styles.layoutWrapper}>
+      {/* Primer elemento enfocable: permite saltar el menú con el teclado */}
+      <a href="#contenido" className="skip-link">Saltar al contenido</a>
+
       <Navbar />
 
-      <main className={styles.mainContent}>
+      <main id="contenido" tabIndex={-1} className={styles.mainContent}>
         {children}
       </main>
 

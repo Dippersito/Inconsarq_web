@@ -71,7 +71,7 @@
   font-weight: 700;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--primary-color);
+  color: var(--primary-text);
   margin-bottom: 18px;
 }
 
@@ -173,16 +173,18 @@
   transform: translateX(4px);
 }
 
+/* Servicio seleccionado: mismo borde en los cuatro lados (sin franja lateral);
+   el énfasis lo dan el tinte naranja, el borde y el ícono encendido. */
 .activeTab {
   background: linear-gradient(
     90deg,
-    rgba(198, 77, 39, 0.18) 0%,
+    rgba(198, 77, 39, 0.2) 0%,
     rgba(198, 77, 39, 0.06) 100%
   ) !important;
-  border-color: rgba(198, 77, 39, 0.4) !important;
-  border-left: 3px solid var(--primary-color) !important;
+  border-color: rgba(198, 77, 39, 0.5) !important;
   color: var(--text-light) !important;
   transform: translateX(0) !important;
+  box-shadow: 0 8px 24px rgba(198, 77, 39, 0.12);
 }
 
 .tabIcon {
@@ -259,9 +261,8 @@
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--primary-color);
+  color: var(--primary-text);
   margin-bottom: 8px;
-  opacity: 0.8;
 }
 
 .cardTitle {
@@ -354,9 +355,13 @@
     flex-direction: row;
     overflow-x: auto;
     padding-bottom: 8px;
+    padding-right: 56px; /* el último servicio puede salir de la zona difuminada */
     -ms-overflow-style: none;
     scrollbar-width: none;
     gap: 8px;
+    /* Difumina el borde derecho: deja ver que la fila de servicios sigue */
+    -webkit-mask-image: linear-gradient(to right, #000 82%, transparent);
+    mask-image: linear-gradient(to right, #000 82%, transparent);
   }
 
   .sidebar::-webkit-scrollbar {

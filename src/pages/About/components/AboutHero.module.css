@@ -2,22 +2,26 @@
    ABOUT HERO — AboutHero.module.css
    ========================================= */
 
+/* Páginas internas: el hero ocupa ~3/4 de pantalla para que asome el contenido
+   (a pantalla completa parecía que la página terminaba ahí). */
 .heroSection {
-  height: 100vh;
-  min-height: 600px;
+  height: 78vh;
+  height: 78svh;
+  min-height: 560px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
+  --hero-shade: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(8, 8, 8, 0.72) 60%,
+    var(--secondary-color) 100%
+  );
   background:
-    linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.5) 0%,
-      rgba(8, 8, 8, 0.72) 60%,
-      var(--secondary-color) 100%
-    ),
-    url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2071&auto=format&fit=crop');
+    var(--hero-shade),
+    url('../../../assets/fondos/nosotros-planos.webp');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -70,7 +74,7 @@
   font-weight: 700;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--primary-color);
+  color: var(--primary-text);
   margin-bottom: 24px;
 }
 
@@ -118,8 +122,14 @@
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
   .heroSection {
-    height: 100vh;
+    height: auto;
+    min-height: 70svh;
     padding: 140px 0 100px;
+    background:
+      var(--hero-shade),
+      url('../../../assets/fondos/nosotros-planos-movil.webp');
+    background-size: cover;
+    background-position: center;
     background-attachment: scroll;
   }
 
@@ -129,5 +139,4 @@
   }
 
   .heroSubtitle { font-size: 1rem; }
-  .scrollIndicator { display: none; }
 }

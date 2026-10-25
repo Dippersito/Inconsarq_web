@@ -13,9 +13,25 @@ const Navbar = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // la página puede cargar ya desplazada (recarga a mitad de página)
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Menú móvil abierto: Escape lo cierra y la página de fondo no se desplaza
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') setIsOpen(false);
+    };
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [isOpen]);
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
@@ -26,12 +42,12 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`${styles.navbar} ${isScrolled ? styles.scrolled : ''}`}>
+    <nav className={`${styles.navbar} ${isScrolled ? styles.scrolled : ''}`} aria-label="Principal">
       <div className={styles.container}>
-        
+
         {/* LOGO CON IMAGEN Y SCROLL UP */}
         <NavLink to="/" className={styles.logo} onClick={closeMenu}>
-          <img src={logoImg} alt="INCONSARQ Logo" className={styles.logoImage} decoding="async" width="160" height="48" fetchPriority="high" />
+          <img src={logoImg} alt="INCONSARQ — Inicio" className={styles.logoImage} decoding="async" width="160" height="74" fetchPriority="high" />
         </NavLink>
 
         {/* DESKTOP LINKS */}
