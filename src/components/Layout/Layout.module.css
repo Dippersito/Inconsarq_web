@@ -15,3 +15,8 @@
   /* Si el navbar es fixed y tapa contenido, descomenta la siguiente línea: */
   /* padding-top: var(--header-height); */
 }
+
+/* Recibe el foco del enlace "Saltar al contenido"; no necesita anillo */
+.mainContent:focus {
+  outline: none;
+}

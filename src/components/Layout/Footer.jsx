@@ -20,7 +20,7 @@ const Footer = () => {
               loading="lazy"
               decoding="async"
               width="160"
-              height="48"
+              height="74"
             />
           </Link>
 
@@ -33,7 +33,12 @@ const Footer = () => {
               <span className={styles.iconWrapper}><Phone size={18} /></span>
               <div>
                 <p className={styles.contactLabel}>Representante</p>
-                <p>{site.contact.representative}: {site.contact.phone}</p>
+                <p>
+                  {site.contact.representative}:{' '}
+                  <a href={`tel:${site.contact.phoneTel}`} className={styles.mapLink}>
+                    {site.contact.phone}
+                  </a>
+                </p>
               </div>
             </div>
 
@@ -85,7 +90,7 @@ const Footer = () => {
             <a
               href={whatsappUrl}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className={styles.socialIcon}
               aria-label="Contactar por WhatsApp"
             >

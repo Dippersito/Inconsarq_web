@@ -18,6 +18,15 @@ const SKIP_FILES = new Set(['react.svg', 'vite.svg']);
 const VALID_EXTS = new Set(['.png', '.jpg', '.jpeg']);
 const MAX_WIDTH = 1920; // tope razonable para foto en web (incluso para 4K screens)
 
+// Imágenes que nunca se muestran grandes: generarlas a 1920 px solo agrega peso.
+// El logo se pinta a ~120 px de ancho (navbar y footer) y las fotos del equipo
+// en tarjetas de ~550 px; el ancho cubre pantallas de alta densidad (2x-3x).
+const MAX_WIDTH_BY_FILE = {
+  'Nuevo_logo_202020.png': 400,
+  'foto_juan.png': 1000,
+  'foto_julissa.png': 1000,
+};
+
 async function* walk(dir) {
   for (const entry of await readdir(dir, { withFileTypes: true })) {
     const path = join(dir, entry.name);
@@ -46,8 +55,9 @@ async function convert(file) {
   }
 
   const isPng = ext.toLowerCase() === '.png';
+  const maxWidth = MAX_WIDTH_BY_FILE[`${name}${ext}`] ?? MAX_WIDTH;
   await sharp(file)
-    .resize({ width: MAX_WIDTH, withoutEnlargement: true, fit: 'inside' })
+    .resize({ width: maxWidth, withoutEnlargement: true, fit: 'inside' })
     .webp({ quality: isPng ? 88 : 80, effort: 6 })
     .toFile(out);
 

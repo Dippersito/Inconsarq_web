@@ -38,4 +38,14 @@ export default defineConfig([
       'jsx-a11y/click-events-have-key-events': 'warn',
     },
   },
+  {
+    // Pruebas e2e y configuración de Playwright: corren en Node, no en el navegador
+    files: ['tests/**/*.js', 'playwright.config.js'],
+    languageOptions: {
+      globals: { ...globals.node, ...globals.browser },
+    },
+    rules: {
+      'react-hooks/rules-of-hooks': 'off', // el `use` de los fixtures no es un hook de React
+    },
+  },
 ])

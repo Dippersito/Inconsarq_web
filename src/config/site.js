@@ -37,5 +37,10 @@ export const site = {
   // Si en el futuro abren cuenta, agregar la URL acá y restaurar el render en Footer.jsx.
   social: {},
 
-  domain: 'https://inconsarq.com',
+  // Dominio canónico: el que realmente sirve el sitio. Vercel redirige
+  // inconsarq.com → www.inconsarq.com, así que canonical, sitemap y Open Graph
+  // apuntan a www (si apuntaran al dominio sin www, Google vería una
+  // redirección en cada URL "oficial"). Si algún día se invierte la
+  // redirección en Vercel, cambiar acá Y en index.html, sitemap.xml y robots.txt.
+  domain: 'https://www.inconsarq.com',
 };

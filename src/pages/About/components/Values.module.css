@@ -27,7 +27,7 @@
   font-weight: 700;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--primary-color);
+  color: var(--primary-text);
   margin-bottom: 18px;
   width: 100%;
 }

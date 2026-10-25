@@ -4,19 +4,23 @@
 
 .heroSection {
   height: 100vh;
+  height: 100svh; /* en celular no salta al ocultarse la barra del navegador */
   min-height: 640px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  background:
-  linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(6, 6, 6, 0.40) 85%,
-    var(--secondary-color) 100%
-  ),
-  var(--hero-bg);
+  /* Sombra radial detrás del texto: el cielo del atardecer es claro y el
+     subtítulo y la etiqueta naranja se perdían sobre la foto. */
+  --hero-shade:
+    radial-gradient(ellipse 60% 55% at 50% 50%, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.2) 60%, transparent 100%),
+    linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(6, 6, 6, 0.40) 85%,
+      var(--secondary-color) 100%
+    );
+  background: var(--hero-shade), var(--hero-bg);
   background-size: cover;
   background-position: center 40%;
   background-attachment: fixed;
@@ -73,8 +77,9 @@
   font-weight: 700;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--primary-color);
+  color: var(--primary-text);
   margin-bottom: 28px;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.6);
 }
 
 .heroEyebrow::before,
@@ -119,6 +124,7 @@
   max-width: 580px;
   line-height: 1.8;
   font-weight: 300;
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.7);
 }
 
 /* Botones */
@@ -132,6 +138,9 @@
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
   .heroSection {
+    background: var(--hero-shade), var(--hero-bg-movil);
+    background-size: cover;
+    background-position: center 40%;
     background-attachment: scroll;
   }
 
@@ -147,6 +156,4 @@
     width: 100%;
     max-width: 280px;
   }
-
-  .scrollIndicator { display: none; }
 }

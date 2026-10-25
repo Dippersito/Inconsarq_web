@@ -13,7 +13,8 @@
 .ctaBg {
   position: absolute;
   inset: 0;
-  background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop');
+  /* Antes se cargaba desde Unsplash (2070 px); ahora se sirve desde el sitio */
+  background-image: url('../../../assets/fondos/cta-edificios.webp');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -51,7 +52,7 @@
   font-weight: 700;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--primary-color);
+  color: var(--primary-text);
   margin-bottom: 20px;
 }
 
@@ -110,7 +111,10 @@
 @media (max-width: 900px) {
   .ctaSection { padding: 100px 0; }
   .ctaTitle { font-size: 2.8rem; letter-spacing: -1px; }
-  .ctaBg { background-attachment: scroll; }
+  .ctaBg {
+    background-image: url('../../../assets/fondos/cta-edificios-movil.webp');
+    background-attachment: scroll;
+  }
 }
 
 @media (max-width: 600px) {

@@ -2,21 +2,25 @@
    CONTACT HERO — ContactHero.module.css
    ========================================= */
 
+/* Más bajo que el resto: quien entra a Contacto viene a escribir, el
+   formulario tiene que asomar sin desplazarse una pantalla entera. */
 .heroSection {
-  height: 100vh;
+  height: 64vh;
+  height: 64svh;
   min-height: 480px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  --hero-shade: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.5) 0%,
+    rgba(8,8,8,0.78) 60%,
+    var(--secondary-color) 100%
+  );
   background:
-    linear-gradient(
-      to bottom,
-      rgba(0,0,0,0.5) 0%,
-      rgba(8,8,8,0.78) 60%,
-      var(--secondary-color) 100%
-    ),
-    url('../../../assets/imagen10.jpeg');
+    var(--hero-shade),
+    url('../../../assets/imagen10.webp');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -67,7 +71,7 @@
   font-weight: 700;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--primary-color);
+  color: var(--primary-text);
   margin-bottom: 20px;
 }
 
@@ -113,11 +117,16 @@
 
 @media (max-width: 768px) {
   .heroSection {
-    height: 100vh;
+    height: auto;
+    min-height: 60svh;
     padding: 120px 0 80px;
+    background:
+      var(--hero-shade),
+      url('../../../assets/imagen10-movil.webp');
+    background-size: cover;
+    background-position: center;
     background-attachment: scroll;
   }
   .heroTitle { font-size: 2.6rem; letter-spacing: -1px; }
   .heroSubtitle { font-size: 0.95rem; }
-  .scrollIndicator { display: none; }
 }

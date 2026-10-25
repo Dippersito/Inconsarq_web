@@ -37,7 +37,7 @@
   font-weight: 700;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--primary-color);
+  color: var(--primary-text);
   margin-bottom: 18px;
 }
 
@@ -197,21 +197,42 @@
 
 .indicators {
   display: flex;
-  gap: 10px;
+  gap: 2px;
   align-items: center;
 }
 
+/* El botón mide 24 px (área de toque mínima recomendada); el punto visible
+   sigue siendo el de 8 px, dibujado con ::before. */
 .dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background-color: rgba(255,255,255,0.2);
+  width: 24px; height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
   cursor: pointer;
   border: none;
   padding: 0;
+  transition: width 0.4s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+.dot::before {
+  content: '';
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,0.2);
   transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
 }
 
+.dot:hover::before {
+  background-color: rgba(255,255,255,0.45);
+}
+
 .activeDot {
+  width: 36px;
+}
+
+.activeDot::before,
+.activeDot:hover::before {
   background-color: var(--primary-color);
   width: 28px;
   border-radius: 4px;
@@ -248,7 +269,7 @@
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--primary-color);
+  color: var(--primary-text);
   margin-bottom: 14px;
   padding: 5px 12px;
   background: rgba(198,77,39,0.1);
@@ -339,6 +360,11 @@
     grid-template-columns: 1fr;
     grid-template-rows: 280px 1fr;
   }
+
+  /* Sin esto la imagen conservaba sus 440 px de alto mínimo dentro de una fila
+     de 280 px y se montaba sobre el texto: tapaba los puntos, las flechas y
+     parte del título del servicio en celulares. */
+  .carouselImageSide { min-height: 0; }
 
   .carouselOverlay {
     background: linear-gradient(180deg, transparent 40%, var(--tertiary-color) 100%);

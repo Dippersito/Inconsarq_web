@@ -66,7 +66,6 @@ const WhoWeAreHome = () => {
                     <div className={styles.iconBox}>{card.icon}</div>
                     <span className={styles.cardTitle}>{card.title}</span>
                   </div>
-                  <div className={styles.cardAccent} />
                 </GlassCard>
               </motion.div>
             ))}

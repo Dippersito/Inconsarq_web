@@ -4,9 +4,11 @@
 
 .whoSection {
   position: relative;
-  background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop');
+  /* Foto propia del cliente (equipo en obra). Reemplaza la foto de stock de
+     una oficina que se cargaba desde Unsplash y no correspondía al rubro. */
+  background-image: url('../../../assets/imagen13.webp');
   background-size: cover;
-  background-position: center;
+  background-position: center 30%;
   background-attachment: fixed;
   padding: 140px 0;
   overflow: hidden;
@@ -68,7 +70,7 @@
   font-weight: 700;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--primary-color);
+  color: var(--primary-text);
   margin-bottom: 20px;
 }
 
@@ -159,24 +161,6 @@
   box-shadow:
     0 20px 40px rgba(198, 77, 39, 0.12),
     0 0 0 1px rgba(198, 77, 39, 0.08);
-}
-
-/* Línea de acento izquierda animada */
-.cardAccent {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 3px;
-  height: 100%;
-  background: linear-gradient(180deg, var(--primary-color), transparent);
-  transform: scaleY(0);
-  transform-origin: top;
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  border-radius: 0 2px 2px 0;
-}
-
-.glassCardWho:hover .cardAccent {
-  transform: scaleY(1);
 }
 
 .cardInner {

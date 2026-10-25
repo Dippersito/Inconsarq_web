@@ -17,7 +17,7 @@ const Home = () => {
     >
       <Seo
         title="INCONSARQ — Ingeniería, Construcción y Arquitectura | Arequipa, Perú"
-        description="Empresa peruana especializada en geosintéticos, tuberías HDPE, supervisión de obras, expedientes técnicos y saneamiento físico-legal. +10 años construyendo confianza desde Arequipa."
+        description="Ingeniería y construcción en Arequipa: geosintéticos, tuberías HDPE, supervisión de obras, expedientes técnicos y saneamiento físico-legal. +10 años de experiencia."
         path="/"
       />
       <Hero />

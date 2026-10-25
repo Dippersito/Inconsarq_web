@@ -64,7 +64,7 @@ const Values = () => {
                   {/* Se eliminó el número (valueIndex) de aquí */}
                 </div>
                 
-                <h4 className={styles.valueTitle}>{value.title}</h4>
+                <h3 className={styles.valueTitle}>{value.title}</h3>
                 <div className={styles.valueDivider} />
                 <p className={styles.valueDesc}>{value.desc}</p>
               </div>

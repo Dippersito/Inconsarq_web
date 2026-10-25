@@ -4,7 +4,7 @@ import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Reveal } from '../../../components/Animation/Reveal';
 import imgGeosinteticos from '../../../assets/imagen10.webp';
-import imgHdpe from '../../../assets/imagen19.jpg';
+import imgHdpe from '../../../assets/imagen19.webp';
 import imgEjecucion from '../../../assets/imagen22.webp';
 import styles from './ServicesCarousel.module.css';
 
@@ -80,10 +80,15 @@ const ServicesCarousel = () => {
         </Reveal>
 
         {/* ── CARRUSEL ── */}
+        {/* Se pausa con el mouse encima o con el foco del teclado dentro */}
         <div
           className={styles.carouselWrapper}
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
+          onFocus={() => setIsPaused(true)}
+          onBlur={(e) => {
+            if (!e.currentTarget.contains(e.relatedTarget)) setIsPaused(false);
+          }}
         >
           {/* IMAGEN */}
           <div className={styles.carouselImageSide}>
@@ -146,17 +151,19 @@ const ServicesCarousel = () => {
                 {services.map((_, idx) => (
                   <button
                     key={idx}
+                    type="button"
                     className={`${styles.dot} ${idx === currentIndex ? styles.activeDot : ''}`}
                     onClick={() => goTo(idx, idx > currentIndex ? 1 : -1)}
                     aria-label={`Ir al servicio ${idx + 1}`}
+                    aria-current={idx === currentIndex ? 'true' : undefined}
                   />
                 ))}
               </div>
               <div className={styles.arrowBtns}>
-                <button className={styles.arrowBtn} onClick={goPrev} aria-label="Anterior">
+                <button type="button" className={styles.arrowBtn} onClick={goPrev} aria-label="Servicio anterior">
                   <ChevronLeft size={18} />
                 </button>
-                <button className={styles.arrowBtn} onClick={goNext} aria-label="Siguiente">
+                <button type="button" className={styles.arrowBtn} onClick={goNext} aria-label="Servicio siguiente">
                   <ChevronRight size={18} />
                 </button>
               </div>

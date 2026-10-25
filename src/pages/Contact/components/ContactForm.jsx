@@ -1,8 +1,9 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import { Reveal } from '../../../components/Animation/Reveal';
 import { Send, User, Mail, Phone, MessageSquare, CheckCircle2, AlertCircle } from 'lucide-react';
 import { site } from '../../../config/site';
+import { services } from '../../../config/services';
 import styles from './ContactForm.module.css';
 
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
@@ -10,26 +11,30 @@ const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 const IS_CONFIGURED = Boolean(SERVICE_ID && TEMPLATE_ID && PUBLIC_KEY);
 
-const SERVICES = [
-  'Expedientes Técnicos',
-  'Saneamiento Físico-Legal',
-  'Levantamiento Topográfico',
-  'Ejecución Integral de Proyectos',
-  'Geosintéticos',
-  'Tuberías HDPE',
-  'Supervisión de Obras',
-  'Asesoramiento y Consultoría',
-  'Servicios Misceláneos',
-  'Otro',
-];
+// Misma lista que la página de Servicios (src/config/services.js) + "Otro"
+const SERVICE_OPTIONS = [...services.map((s) => s.title), 'Otro'];
 
 const ContactForm = () => {
   const form = useRef(null);
+  const successRef = useRef(null);
   const [status, setStatus] = useState('idle'); // 'idle' | 'loading' | 'success' | 'error'
   const [errorMessage, setErrorMessage] = useState('');
 
+  // Al enviar, el formulario desaparece: el foco pasa al mensaje de éxito
+  // para que un lector de pantalla lo anuncie y el teclado no quede perdido.
+  useEffect(() => {
+    if (status === 'success') successRef.current?.focus();
+  }, [status]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Campo trampa (honeypot): una persona no lo ve ni lo llena; los bots que
+    // completan todos los campos sí. Se simula éxito sin enviar nada.
+    if (form.current?.elements.website?.value) {
+      setStatus('success');
+      return;
+    }
 
     if (!IS_CONFIGURED) {
       setErrorMessage(
@@ -70,15 +75,21 @@ const ContactForm = () => {
         </div>
 
         {isSent ? (
-          <div className={styles.successState}>
+          <div className={styles.successState} role="status">
             <div className={styles.successIcon}>
               <CheckCircle2 size={40} />
             </div>
-            <h3>¡Mensaje enviado!</h3>
+            <h3 ref={successRef} tabIndex={-1}>¡Mensaje enviado!</h3>
             <p>Gracias por contactarnos. Nos comunicaremos contigo a la brevedad.</p>
           </div>
         ) : (
           <form ref={form} onSubmit={handleSubmit} className={styles.form}>
+            {/* Honeypot: fuera de pantalla, sin foco ni autocompletado */}
+            <div className={styles.honeypot} aria-hidden="true">
+              <label htmlFor="contact-website">No completar este campo</label>
+              <input id="contact-website" type="text" name="website" tabIndex={-1} autoComplete="off" />
+            </div>
+
             <div className={styles.row}>
               <div className={styles.inputGroup}>
                 <label className={styles.label} htmlFor="contact-name">
@@ -136,7 +147,7 @@ const ContactForm = () => {
                 required
               >
                 <option value="" disabled>Selecciona un servicio...</option>
-                {SERVICES.map((s) => (
+                {SERVICE_OPTIONS.map((s) => (
                   <option key={s} value={s}>{s}</option>
                 ))}
               </select>
@@ -169,7 +180,7 @@ const ContactForm = () => {
               disabled={isLoading}
             >
               {isLoading ? (
-                <span className={styles.spinner} aria-label="Enviando" />
+                <span className={styles.spinner} role="status" aria-label="Enviando mensaje" />
               ) : (
                 <>
                   <span>Enviar Mensaje</span>

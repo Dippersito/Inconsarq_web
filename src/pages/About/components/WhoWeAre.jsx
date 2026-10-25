@@ -1,6 +1,6 @@
 import { Reveal } from '../../../components/Animation/Reveal';
 import { MapPin } from 'lucide-react';
-import whoWeAreImg from '../../../assets/imagen13.jpg';
+import whoWeAreImg from '../../../assets/imagen13.webp';
 import styles from './WhoWeAre.module.css';
 
 const STATS = [
@@ -38,6 +38,8 @@ const WhoWeAre = () => {
                   className={styles.whoImage}
                   loading="lazy"
                   decoding="async"
+                  width="1024"
+                  height="678"
                 />
                 <div className={styles.imageOverlay} />
                 <div className={styles.locationTag}>

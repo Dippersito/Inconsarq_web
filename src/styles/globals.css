@@ -1,6 +1,9 @@
 :root {
-  /* ... tus variables de colores ... */
   --primary-color: #c64d27;
+  /* Mismo naranja, un punto más claro, para TEXTO pequeño (etiquetas, cargos,
+     enlace activo): #c64d27 sobre el fondo oscuro da 4.1:1 y WCAG AA pide
+     4.5:1; este da 5.5:1. Botones, líneas e íconos siguen con --primary-color. */
+  --primary-text: #e0643b;
   --secondary-color: #0f0f0f; /* Fondo principal */
   --tertiary-color: #1a1a1a;
   --text-light: rgb(255, 255, 255);
@@ -8,7 +11,9 @@
   --container-width: 1200px;
   --header-height: 80px;
   --border-radius: 12px;
-  --font-main: 'Inter', system-ui, sans-serif;
+  /* Inter se sirve desde el propio sitio (@fontsource-variable/inter, ver main.jsx):
+     es la tipografía de la firma de correo y ya era la declarada aquí. */
+  --font-main: 'Inter Variable', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 }
 
 html, body {
@@ -24,12 +29,56 @@ body {
   color: var(--text-light);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+/* Los enlaces heredan el color y no se subrayan: cada componente define su estilo.
+   Sin esto el navegador subrayaba los enlaces del menú. */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1, h2, h3 {
+  text-wrap: balance; /* Reparte los títulos en líneas parejas */
+}
+
+::selection {
+  background: rgba(198, 77, 39, 0.85);
+  color: #fff;
+}
+
+/* Foco visible solo para teclado (el clic con mouse no lo muestra) */
+:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Enlace "Saltar al contenido": invisible hasta que recibe foco con Tab */
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 2000;
+  padding: 10px 18px;
+  border-radius: 8px;
+  background: var(--primary-color);
+  color: #fff;
+  font-weight: 600;
+  transform: translateY(-160%);
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
 }
 
 /* Scrollbar personalizada */
@@ -45,4 +94,18 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary-color);
+}
+
+/* Visitantes que piden menos movimiento en su sistema operativo:
+   sin transiciones ni fondos fijos (el parallax marea). Las animaciones
+   de framer-motion se apagan con <MotionConfig reducedMotion="user">. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    background-attachment: scroll !important;
+  }
 }
